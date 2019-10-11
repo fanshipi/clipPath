@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 500px;
+            position: relative;
+        }
+
+        .wrap {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap section {
+            width: calc(100% / 2);
+            height: 100%;
+            float: left;
+            transition-duration: 0.5s;
+            position: relative;
+        }
+
+
+
+        .wrap .pic1 {
+            width: 60%;
+            background: url('./img/8003.jpg');
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+            position: absolute;
+            z-index: 100;
+            bottom: 10px;
+            left: 100px;
+        }
+
+        .wrap .pic2 {
+            background: url('./img/8004.jpg');
+            position: absolute;
+            right: 100px;
+            bottom: 10px;
+        }
+
+        .wrap section.pic1 {
+            background-repeat: no-repeat;
+            background-position: 1% 50%;
+            background-size: cover;
+        }
+
+        .wrap section.pic2 {
+            background-repeat: no-repeat;
+            background-position: 40% 50%;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <section class="pic1"></section>
+        <section class="pic2"></section>
+    </div>
+    <script src='jquery-1.12.4.js'></script>
+    <script>
+        $(function () {
+         
+            var w1 = $('.pic1').width();
+            var w2 = $('.pic2').width();
+            // $('section.pic2').on('mouseenter',function(){
+            //     $(this).siblings().animate({width:w1-100});
+            // });
+            // $('section.pic2').on('mouseleave',function(){
+            //    $(this).width(w2);
+            //    $(this).siblings().width(w1);
+            // })
+            $('section.pic2').on('mouseenter',function(){
+                $(this).siblings().css({width:w1-100});
+            });
+            $('section.pic2').on('mouseleave',function(){
+                // $(this).css({width:w2});
+                // $(this).siblings.css({width:w1});
+               $(this).width(w2);
+               $(this).siblings().width(w1);
+            })
+        });
+    </script>
+</body>
+
+</html>
